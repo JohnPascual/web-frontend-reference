@@ -1,0 +1,34 @@
+<html>
+    <!--
+       This bit of code allows for an img tag to be centered on a page
+       as if it is a background image, without having to code the image
+       location in CSS.  The image remains centered even if the browser
+       window is resized.
+    -->
+    <head>
+        <style>
+            body {
+                background-color: #222222;
+            }
+            
+            div {
+                position:relative;
+                width: 100%;
+                height: 100%;
+                overflow:hidden;
+            }
+            img {
+                position: absolute;
+                margin:0 auto;
+                width: 1600px;
+                margin-left: -800px;
+                left:50%;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <img src='img/healthypixel_characters_1600x428.jpg'/>
+        </div>
+    </body>
+</html>
