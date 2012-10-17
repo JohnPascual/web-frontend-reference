@@ -1,1 +1,1 @@
-Welcome to the web-frontend-reference wiki!
+This repository contains HTML, CSS, and JS code for front-end web development.
