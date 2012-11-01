@@ -1,0 +1,13 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<a href="#">Click me to play the Youtube clip.</a>
+<iframe height="432" width="768" src="http://www.youtube.com/embed/q9NE0qheLSo?rel=0"></iframe>
+<script>
+  $(document).ready(function() {
+    var trigger = $('a')
+    var target = $('iframe');
+    trigger.click(function(event){
+      event.preventDefault();
+      target.attr('src',target.attr('src')+'&autoplay=1');
+    });
+  });
+</script>
