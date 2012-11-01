@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+
+        <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+        Remove this if you use the .htaccess -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+        <title>Healthy Pixel | Labs | Content Filter</title>
+        <meta name="description" content="A Javascript filter for content" />
+        <meta name="author" content="John Pascual" />
+
+        <meta name="viewport" content="width=device-width; initial-scale=1.0" />
+
+        <!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        
+        <style>
+            a {
+                text-decoration: none;
+                color: #000000;
+            }
+            
+            .active{
+                color: #ff0000;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div>
+            <header>
+                <h1>Javascript Content Filter</h1>
+            </header>
+            <ul class="filtered">
+                <li><a cat="1 2 3" href="#">Super Category 1</a>
+                    <ul>
+                        <li><a cat="1" href="#">Cat 1</a></li>
+                        <li><a cat="2" href="#">Cat 2</a></li>
+                        <li><a cat="3" href="#">Cat 3</a></li>
+                    </ul>
+                </li>
+                <li><a cat="4 5 6.1 6.2" href="#">Super Category 2</a>
+                    <ul>
+                        <li><a cat="4" href="#">Cat 4</a></li>
+                        <li><a cat="5" href="#">Cat 5</a></li>
+                        <li><a cat="6.1 6.2" href="#">Cat 6</a>
+                            <ul>
+                                <li><a cat="6.1" href="#">Sub Cat 1</a></li>
+                                <li><a cat="6.2" href="#">Sub Cat 2</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a icat="1 2 3" href="#">Super Category 3 - Independent Filter</a>
+                    <ul>
+                        <li><a icat="1" href="#">Cat 1</a></li>
+                        <li><a icat="2" href="#">Cat 2</a></li>
+                        <li><a icat="3" href="#">Cat 3</a></li>
+                    </ul>
+                </li>
+            </ul><!--filtered-->
+
+            <div>
+
+            </div>
+
+            <footer>
+                <p>
+                    &copy; Copyright by John Pascual
+                </p>
+            </footer>
+        </div>
+        <script>
+            Array.prototype.unique = function() {
+                var o = {}, i, l = this.length, r = [];
+                for(i=0; i<l;i+=1) o[this[i]] = this[i];
+                for(i in o) r.push(o[i]);
+                return r;
+            };
+            
+            var filters = new Array();
+            var settings = new Object();
+            settings.filterClass = 'filtered';
+            settings.categoryAttributes = ['cat', 'icat'];
+            settings.categoryTag = 'a';
+            //initListeners();
+            var ar = [2,3,4,5,2,3,4,5];
+            console.log(ar.unique());
+            
+            
+            function $(str){
+                return document.querySelectorAll(str);
+            }
+            
+            for(i=0;i<settings.categoryAttributes.length;i++){
+                console.log(settings.categoryAttributes[i]);
+            }
+            
+            
+            
+            //enable click
+            //if all super category clicked, activate all sub
+            //if all sub unclicked within group, activate all sub
+            
+
+            /*
+            function initListeners(){
+                filters = $('.' + settings.filterClass + ' ' + settings.categoryTag);
+                for(var i=0;i<filters.length;i++){
+                    filters[i].addEventListener('click',filterClickListener);
+                }
+            }
+            
+            function filterClickListener(ev){
+                var activeFilters = new Array();
+                console.log(ev.target);
+                ev.preventDefault();
+                for(var i=0; i<settings.categoryAttributes.length; i++){
+                    if(ev.target.getAttribute(settings.categoryAttributes[i])){
+                        activeFilters[i] = ev.target.getAttribute(settings.categoryAttributes[i]).split(" ");
+                        updateFilterSelection(settings.categoryAttributes[i],activeFilters[i]);
+
+                    }
+                }              
+            }
+            
+            function updateFilterSelection(category,activeFilters){
+                for(var j=0; j<activeFilters.length; j++){
+                    var toMakeActive = $('.' + settings.filterClass +' ['+category + '~="' + activeFilters[j]+'"]');
+                    for(k=0; k<toMakeActive.length; k++){
+                        //if active, set to inactive
+                        if(hasClass(toMakeActive[k],'active')){
+                           removeClass(toMakeActive[k],'active'); 
+                        } else {
+                           addClass(toMakeActive[k],'active'); 
+                        }
+                        
+                    }
+                }
+            }
+            
+            function hasClass(ele,cls) {
+                return ele.className.match(new RegExp('(\\s|^)'+cls+'(\\s|$)'));
+            }
+             
+            function addClass(ele,cls) {
+                if (!this.hasClass(ele,cls)) ele.className += " "+cls;
+            }
+             
+            function removeClass(ele,cls) {
+                if (hasClass(ele,cls)) {
+                    var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)');
+                    ele.className=ele.className.replace(reg,' ');
+                }
+            }
+            */
+            
+        </script>
+    </body>
+</html>
